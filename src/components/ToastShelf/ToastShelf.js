@@ -1,19 +1,22 @@
-import React, { useId } from 'react';
+import React, { useContext } from 'react';
 
 import Toast from '../Toast';
 import styles from './ToastShelf.module.css';
+import { ToastContext } from '../ToastProvider/ToastProvider';
 
-function ToastShelf({ data, handleDismiss }) {
+function ToastShelf() {
+  const { toasts } = useContext(ToastContext);
   return (
-    <ol className={styles.wrapper}>
-      {data.map(({ id, message, variant }, idx) => {
+    <ol
+      className={styles.wrapper}
+      role='region'
+      aria-live='assertive'
+      aria-label='Notification'
+    >
+      {toasts.map(({ id, message, variant }) => {
         return (
-          <li key={idx} className={styles.toastWrapper}>
-            <Toast
-              id={id}
-              handleDismiss={handleDismiss}
-              variant={variant}
-            >
+          <li key={id} className={styles.toastWrapper}>
+            <Toast id={id} variant={variant}>
               {message}
             </Toast>
           </li>
@@ -23,4 +26,4 @@ function ToastShelf({ data, handleDismiss }) {
   );
 }
 
-export default ToastShelf;
+export default React.memo(ToastShelf);
