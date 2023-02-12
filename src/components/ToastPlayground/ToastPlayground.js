@@ -10,13 +10,13 @@ import { ToastContext } from '../ToastProvider/ToastProvider';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
-  const { addToasts } = useContext(ToastContext);
+  const { addToast } = useContext(ToastContext);
   const [variant, setVariant] = useState(VARIANT_OPTIONS[0]);
   const [message, setMessage] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addToasts({ message, variant });
+    addToast({ message, variant });
     setVariant(VARIANT_OPTIONS[0]);
     setMessage('');
   };
