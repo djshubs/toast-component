@@ -3,10 +3,9 @@ import useKeyDown from '../../hooks/use-keyDown';
 export const ToastContext = React.createContext();
 
 const ToastProvider = ({ children }) => {
-  console.log('Toast Provider Render');
   const [toasts, setToasts] = React.useState([]);
 
-  const add = ({ message, variant }) => {
+  const add = (message, variant) => {
     const nextToasts = [
       ...toasts,
       { id: crypto.randomUUID(), message, variant },
