@@ -19,7 +19,7 @@ const ToastProvider = ({ children }) => {
     setToasts(nextToasts);
   };
 
-  const addToasts = useCallback(add, [add]);
+  const addToast = useCallback(add, [add]);
   const removeToast = useCallback(remove, [remove]);
   const removeAllToasts = useCallback(() => {
     setToasts([]);
@@ -31,7 +31,7 @@ const ToastProvider = ({ children }) => {
     <ToastContext.Provider
       value={{
         toasts,
-        addToasts,
+        addToast,
         removeToast,
         removeAllToasts,
       }}
